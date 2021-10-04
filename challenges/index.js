@@ -2,6 +2,8 @@ function getEvenNumbers(nums) {
   /*
     This function takes an array of integers and returns an array containing only even integers
   */
+
+   return nums.filter(num => num % 2 === 0? true : false);
 }
 
 function flipBooleans(bools) {
@@ -9,6 +11,10 @@ function flipBooleans(bools) {
     This function takes an array of booleans and should return an array of the opposite booleans.
     E.g. [true, true, false] => [false, false, true]
   */
+
+   return bools.map(bool => {
+      return bool === true? false : true;
+    })
 }
 
 function translateKey(student, keyToChange, translation) {

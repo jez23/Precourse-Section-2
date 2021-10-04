@@ -39,12 +39,20 @@ function translateKey(student, keyToChange, translation) {
       job: 'Artist'
     }
   */
+    
+
+    console.log(33, student, keyToChange, translation)
 }
 
 function findFirstDentist(people) {
   /*
     This function takes an array of people objects and returns the first found dentist object from the array.
   */
+  if(people.length < 1){
+    return null;
+  }
+  const dentists = people.filter(person => person.isDentist? true : false);
+  return dentists[0];
 }
 
 function tallyPeopleInManchester(people) {
@@ -55,6 +63,12 @@ function tallyPeopleInManchester(people) {
 
     The function should return the number of people who live in the city of Manchester
   */
+    const liveInManchester = people.filter(person => {
+        return person.lives.city === 'Manchester'? true : false;
+    })
+
+    return liveInManchester.length;
+
 }
 
 function getPugOwners(dogs) {
@@ -67,6 +81,13 @@ function getPugOwners(dogs) {
     ]
     will return ['Izzi', 'Anat']
   */
+    const isItAPug = dogs.filter(owner => {
+      return owner.breed === 'Pug'? true : false;
+    })
+
+    return isItAPug.map(owner => owner.owner);
+
+
 }
 
 function pluraliseKeys(obj) {
@@ -96,6 +117,25 @@ function pluraliseKeys(obj) {
       ]
     }
   */
+
+  let newKeys = [];
+  let newObj = {};
+  let originalKeys = Object.keys(obj);
+
+  originalKeys.forEach(key => {
+    if(Array.isArray(obj[key])){
+      newKeys.push(`${key}s`);
+    } else{
+      newKeys.push(key);
+    }
+  })
+
+  newKeys.forEach((key, index) => {
+    newObj[key] = obj[originalKeys[index]]
+  })
+
+return newObj;
+
 }
 
 function getWordLengths(str) {
@@ -103,6 +143,10 @@ function getWordLengths(str) {
     This function takes a string and returns an array of the lengths of each word in the string.
     E.g. 'pineapple and black bean curry' => [9, 3, 5, 4, 5]
   */
+  if(str.length < 1){
+    return [];
+  }
+  return str.split(" ").map(word => word.length);
 }
 
 function getPalindromes(words) {
@@ -111,6 +155,16 @@ function getPalindromes(words) {
     A palindrome is a word that is spelled the same way backwards.
     E.g. ['foo', 'racecar', 'pineapple', 'porcupine', 'tacocat'] =>  ['racecar', 'tacocat']
   */
+    if(words.length < 1){
+      return [];
+    }
+
+    return words.filter(word => {
+      if(word === word.split("").reverse().join("")){
+        return true;
+      }
+    })
+
 }
 
 function replaceLettersWithXs(str) {
@@ -118,6 +172,14 @@ function replaceLettersWithXs(str) {
     This function will receive a string with a mix of characters. It should return the string with all letters replaced by dashes ('X').
     For example 'I love Greg' should return 'X XXXX XXXX', and 'Hard as 1, 2, 3' should return 'XXXX XX 1, 2, 3'.
   */
+    let newString = '';
+    const regex = /^[A-Z]+$/i;
+
+    str.split("").forEach(letter => {
+        letter.match(regex) ? newString += 'X' : newString += letter;
+    })
+
+    return newString;
 }
 
 function validMobileNumber(num) {
@@ -128,6 +190,12 @@ function validMobileNumber(num) {
     It may also begin with '00447' followed by 9 more digits.
     Anything else is invalid.
   */
+    const regEx1 = /^07\d{9}$/;
+    const regEx2 = /^\+447\d{9}$/;
+    const regEx3 = /^00447\d{9}$/;
+  
+    return regEx1.test(num) || regEx2.test(num) || regEx3.test(num)? true: false;
+    
 }
 
 function sumDigitsFromString(str) {

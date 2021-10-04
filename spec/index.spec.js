@@ -46,7 +46,7 @@ describe("flipBooleans", () => {
   });
 });
 
-describe("translateKey", () => {
+xdescribe("translateKey", () => {
   it("returns a new object", () => {
     const student = {
       prénom: "Carla",

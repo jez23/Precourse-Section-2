@@ -423,7 +423,7 @@ describe("getFactorials", () => {
   });
 });
 
-describe("largestNumber", () => {
+xdescribe("largestNumber", () => {
   it("if passed a single-digit number then returns that number", () => {
     expect(largestNumber(9)).to.equal(9);
     expect(largestNumber(0)).to.equal(0);

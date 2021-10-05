@@ -205,6 +205,19 @@ function sumDigitsFromString(str) {
     'foo99cat' => 18
     Tip: For this one, it might be useful to know that the value `NaN` in JavaScript behaves oddly. For example, if you do `typeof NaN` it tells you it's a `"number"`. Odd, eh?
   */
+
+  
+    const regEx2 = /[0-9]/gi;
+    let count = 0;
+
+    str.split("").forEach(character => {
+      if(character.match(regEx2)){
+        count += +character;
+      }
+    })
+
+    return count;
+
 }
 
 function getWilliams(arr) {
@@ -212,6 +225,14 @@ function getWilliams(arr) {
     This function takes an array of full names and returns an array containing only the people whose last name is Williams.
     E.g. ['Charlotte Jones', 'Rebecca Williams', 'Harry Williams', 'John Williamson', 'William Jones'] => ['Rebecca Williams', 'Harry Williams']
   */
+
+   return arr.filter(name => {
+      const firstAndLast = name.split(" ");
+      if(firstAndLast[1] === 'Williams'){
+        return true;
+      }
+    })
+
 }
 
 function getFactorials(nums) {
@@ -222,6 +243,17 @@ function getFactorials(nums) {
     The factorial of a number is the product of that number and all the integers below it.
     E.g. the factorial of 4 is 4 * 3 * 2 * 1 = 24
   */
+    function factorial(x) {
+        if (x === 0){
+          return 1;
+        }
+        return x * factorial(x-1);       
+    }
+
+    return nums.map(num => {
+      return factorial(num)
+    })
+
 }
 
 function largestNumber(num) {
@@ -231,6 +263,17 @@ function largestNumber(num) {
     E.g. if num is 9, the function should return 9.
     E.g. if num is 581 the function should return 851.
   */
+
+ if(num.toString().length === 1){
+   return num;
+ }
+
+          num.toString().split("").sort((a, b) => {
+            return a + b;
+          });
+
+     console.log("rsdds", +num.join(""))
+        return +num.join(""); 
 }
 
 function generateMatrix(n) {
@@ -243,6 +286,11 @@ function generateMatrix(n) {
       [null, null, null]
     ]
   */
+
+    
+/*    let matrix =  Array(n).fill([])
+   return matrix[0].unshift(Array(n).fill(null)) */
+
 }
 
 function findWrongWayFruit(orchard) {

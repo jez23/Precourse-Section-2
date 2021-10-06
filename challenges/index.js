@@ -40,8 +40,28 @@ function translateKey(student, keyToChange, translation) {
     }
   */
     
+  let val = '';
+  let index = null;
+  const entries = Object.entries(student);
 
-    console.log(33, student, keyToChange, translation)
+  entries.forEach((entry, i) => {
+    if(entry[0] === keyToChange){
+        val = entry[1];
+        index = i; 
+    }
+  })
+
+   let newObj = {};
+
+    entries.forEach(tag => {
+      if(tag[0] === keyToChange){
+        newObj[translation] = val
+      } else{
+        newObj[tag[0]] = tag[1]
+      }
+    })
+
+    return newObj; 
 }
 
 function findFirstDentist(people) {
@@ -258,13 +278,15 @@ function largestNumber(num) {
     E.g. if num is 581 the function should return 851.
   */
 
-        if(num.toString().length === 1){
-          return num;
-        }
-        num.toString().split("").sort((a, b) => {
-          return a + b;
-        });
-        return +num.join(""); 
+      if(num.toString().length === 1){
+        return num;
+      }
+      numBig = String(num).split('').sort().reverse().join('');
+      if(num === +numBig){
+       return num;
+      } else{
+        return +numBig;
+      }
 }
 
 function generateMatrix(n) {
@@ -296,19 +318,27 @@ function findWrongWayFruit(orchard) {
     }
 
    let newObj = {};
-   orchard.forEach(fruit => {
 
+   orchard.forEach((fruit, index) => {
      if(newObj[fruit]){
-      newObj[fruit]++;
+      newObj[fruit] = [
+        newObj[fruit]++, index
+      ];
      } else {
-      newObj[fruit] = 1;
+      newObj[fruit] = [
+        1, index]
      }
    })
-
+   
+   let index = 0;
    const findOddOne = Object.keys(newObj);
 
-
-    
+   findOddOne.forEach(title => {
+    if(newObj[title][0] === 1){
+        index = newObj[title][1]
+    }  
+   })
+    return index;
 }
 
 function pairDNA(dna) {

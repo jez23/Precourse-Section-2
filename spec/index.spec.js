@@ -46,7 +46,7 @@ describe("flipBooleans", () => {
   });
 });
 
-xdescribe("translateKey", () => {
+describe("translateKey", () => {
   it("returns a new object", () => {
     const student = {
       prénom: "Carla",
@@ -423,7 +423,7 @@ describe("getFactorials", () => {
   });
 });
 
-xdescribe("largestNumber", () => {
+describe("largestNumber", () => {
   it("if passed a single-digit number then returns that number", () => {
     expect(largestNumber(9)).to.equal(9);
     expect(largestNumber(0)).to.equal(0);
@@ -476,7 +476,7 @@ describe("generateMatrix", () => {
   });
 });
 
-xdescribe("findWrongWayFruit", () => {
+describe("findWrongWayFruit", () => {
   it("returns 0 when passed an array length smaller than 3", () => {
     expect(findWrongWayFruit(["apple"])).to.equal(0);
     expect(findWrongWayFruit(["elppa", "apple"])).to.equal(0);

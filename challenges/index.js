@@ -84,7 +84,6 @@ function getPugOwners(dogs) {
     const isItAPug = dogs.filter(owner => {
       return owner.breed === 'Pug'? true : false;
     })
-
     return isItAPug.map(owner => owner.owner);
 
 
@@ -129,7 +128,6 @@ function pluraliseKeys(obj) {
       newKeys.push(key);
     }
   })
-
   newKeys.forEach((key, index) => {
     newObj[key] = obj[originalKeys[index]]
   })
@@ -158,7 +156,6 @@ function getPalindromes(words) {
     if(words.length < 1){
       return [];
     }
-
     return words.filter(word => {
       if(word === word.split("").reverse().join("")){
         return true;
@@ -178,7 +175,6 @@ function replaceLettersWithXs(str) {
     str.split("").forEach(letter => {
         letter.match(regex) ? newString += 'X' : newString += letter;
     })
-
     return newString;
 }
 
@@ -193,7 +189,6 @@ function validMobileNumber(num) {
     const regEx1 = /^07\d{9}$/;
     const regEx2 = /^\+447\d{9}$/;
     const regEx3 = /^00447\d{9}$/;
-  
     return regEx1.test(num) || regEx2.test(num) || regEx3.test(num)? true: false;
     
 }
@@ -215,7 +210,6 @@ function sumDigitsFromString(str) {
         count += +character;
       }
     })
-
     return count;
 
 }
@@ -264,15 +258,12 @@ function largestNumber(num) {
     E.g. if num is 581 the function should return 851.
   */
 
- if(num.toString().length === 1){
-   return num;
- }
-
-          num.toString().split("").sort((a, b) => {
-            return a + b;
-          });
-
-     console.log("rsdds", +num.join(""))
+        if(num.toString().length === 1){
+          return num;
+        }
+        num.toString().split("").sort((a, b) => {
+          return a + b;
+        });
         return +num.join(""); 
 }
 
@@ -287,9 +278,7 @@ function generateMatrix(n) {
     ]
   */
 
-    
-/*    let matrix =  Array(n).fill([])
-   return matrix[0].unshift(Array(n).fill(null)) */
+    return Array.from(Array(n), () => Array(n).fill(null))
 
 }
 
@@ -302,6 +291,24 @@ function findWrongWayFruit(orchard) {
     Your function should return its index position. E.g. in this example, 4.
     NB The fruit will not always be apple but it will always be an orchard of the same kind of fruit.
   */
+    if(orchard.length < 3){
+      return 0;
+    }
+
+   let newObj = {};
+   orchard.forEach(fruit => {
+
+     if(newObj[fruit]){
+      newObj[fruit]++;
+     } else {
+      newObj[fruit] = 1;
+     }
+   })
+
+   const findOddOne = Object.keys(newObj);
+
+
+    
 }
 
 function pairDNA(dna) {
@@ -322,6 +329,25 @@ function tallyHashtagsAndMentions(str) {
     The function should return an object describing the number of hashtags and mentions found:
     { hashtags: 2, mentions: 1 }
   */
+
+    if(str.length < 1){
+      return {};
+    }
+    const regEx1 = /@/g
+    const regEx2 = /#/g
+    let mentions = str.match(regEx1);
+    let hashtags = str.match(regEx2);
+
+    if(mentions == null){
+      mentions = [];
+    }
+    if(hashtags == null){
+      hashtags = [];
+    } 
+   return {
+      hashtags: hashtags.length,
+      mentions: mentions.length
+   }
 }
 
 // ---------- Do not change the code below this line --------------

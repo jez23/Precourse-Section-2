@@ -476,7 +476,7 @@ describe("generateMatrix", () => {
   });
 });
 
-describe("findWrongWayFruit", () => {
+xdescribe("findWrongWayFruit", () => {
   it("returns 0 when passed an array length smaller than 3", () => {
     expect(findWrongWayFruit(["apple"])).to.equal(0);
     expect(findWrongWayFruit(["elppa", "apple"])).to.equal(0);
@@ -543,7 +543,7 @@ describe("findWrongWayFruit", () => {
   });
 });
 
-describe("pairDNA", () => {
+xdescribe("pairDNA", () => {
   it('returns [] when passed ""', () => {
     expect(pairDNA("")).to.eql([]);
   });

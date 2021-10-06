@@ -543,7 +543,7 @@ describe("findWrongWayFruit", () => {
   });
 });
 
-xdescribe("pairDNA", () => {
+describe("pairDNA", () => {
   it('returns [] when passed ""', () => {
     expect(pairDNA("")).to.eql([]);
   });

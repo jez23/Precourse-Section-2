@@ -348,6 +348,31 @@ function pairDNA(dna) {
     If any nonsensical letters are passed as DNA they should be ignored.
     E.g. 'GYTC' => ['GC', 'TA', 'CG']
   */
+
+    if(dna == ""){
+      return [];
+    }
+
+    let regEx = /A/ig;
+    let regEx1 = /T/ig;
+    let regEx2 = /C/ig;
+    let regEx3 = /G/ig;
+
+    let newArray = [];
+
+    dna.split("").map(letter => {
+        if(letter.match(regEx)){
+          newArray.push('AT')
+        } else if(letter.match(regEx1)){
+          newArray.push('TA')
+        } else if(letter.match(regEx2)){
+          newArray.push('CG')
+        } else if(letter.match(regEx3)){
+          newArray.push('GC')
+        } 
+    })
+
+    return newArray;
 }
 
 function tallyHashtagsAndMentions(str) {
